@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NEGA AI 项目介绍</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #101114;
+      --panel: #181a20;
+      --panel-2: #20232b;
+      --text: #f4f5f7;
+      --muted: #a7adbb;
+      --line: #303440;
+      --accent: #46d993;
+      --accent-2: #55a7ff;
+      --danger: #ff6b6b;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+      background:
+        radial-gradient(circle at 12% 15%, rgba(70, 217, 147, 0.16), transparent 28rem),
+        radial-gradient(circle at 86% 6%, rgba(85, 167, 255, 0.13), transparent 25rem),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      color: var(--accent-2);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 48px 0 56px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) 320px;
+      gap: 32px;
+      align-items: center;
+      padding: 36px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(24, 26, 32, 0.78);
+      backdrop-filter: blur(18px);
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      max-width: 720px;
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .avatar-wrap {
+      display: grid;
+      place-items: center;
+      min-height: 320px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: linear-gradient(160deg, rgba(70, 217, 147, 0.13), rgba(85, 167, 255, 0.08));
+    }
+
+    .avatar {
+      width: 210px;
+      height: 210px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid rgba(70, 217, 147, 0.45);
+      box-shadow: 0 0 42px rgba(70, 217, 147, 0.22);
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel-2);
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .button.primary {
+      border-color: rgba(70, 217, 147, 0.55);
+      background: #1f6f4a;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .section {
+      margin-top: 34px;
+    }
+
+    .section h2 {
+      margin: 0 0 14px;
+      font-size: 24px;
+      letter-spacing: 0;
+    }
+
+    .card {
+      min-height: 100%;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(24, 26, 32, 0.84);
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+
+    .card p,
+    .card li {
+      color: var(--muted);
+    }
+
+    .card p {
+      margin: 0;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    code {
+      padding: 2px 6px;
+      border-radius: 5px;
+      background: #0b0c0f;
+      color: #d7fbe8;
+      font-family: "Cascadia Mono", Consolas, monospace;
+      font-size: 0.94em;
+    }
+
+    pre {
+      overflow: auto;
+      margin: 0;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #0b0c0f;
+    }
+
+    pre code {
+      padding: 0;
+      background: transparent;
+      color: #e8edf5;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .tag {
+      padding: 5px 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #15171d;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .note {
+      border-left: 4px solid var(--danger);
+    }
+
+    footer {
+      margin-top: 34px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 860px) {
+      .hero,
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">Local Project Overview</p>
+        <h1>NEGA AI 语音对话项目</h1>
+        <p class="lead">
+          NEGA AI 是一个基于 Next.js 的实时语音对话网页应用，前端通过 ElevenLabs Conversational AI SDK
+          启动语音会话，后端 API 负责向 ElevenLabs 获取带签名的会话 URL。
+        </p>
+        <div class="actions">
+          <a class="button primary" href="README_EN.md">查看英文 README</a>
+          <a class="button" href="doc/1.png">查看图文教程</a>
+          <a class="button" href="public/American.mp3">试听内置语音</a>
+        </div>
+      </div>
+      <div class="avatar-wrap">
+        <img class="avatar" src="public/avatar.png" alt="NEGA AI Agent Avatar" />
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>项目定位</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>实时语音交互</h3>
+          <p>页面会请求麦克风权限，通过 ElevenLabs 的会话能力与 AI Agent 建立实时对话。</p>
+        </article>
+        <article class="card">
+          <h3>可视化会话状态</h3>
+          <p>界面包含连接状态、Agent 头像、实时波形和 Agent 消息展示，方便用户判断当前会话阶段。</p>
+        </article>
+        <article class="card">
+          <h3>本地可运行模板</h3>
+          <p>项目已包含 Next.js、Tailwind CSS、React 组件和 API 路由，可作为语音 AI 应用的二次开发起点。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section two-col">
+      <article class="card">
+        <h2>技术栈</h2>
+        <div class="tag-list">
+          <span class="tag">Next.js 15</span>
+          <span class="tag">React 19 RC</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">Tailwind CSS</span>
+          <span class="tag">ElevenLabs React SDK</span>
+          <span class="tag">Framer Motion</span>
+          <span class="tag">Lucide React</span>
+        </div>
+      </article>
+
+      <article class="card">
+        <h2>关键文件</h2>
+        <ul>
+          <li><code>app/page.tsx</code>：首页入口，渲染语音对话组件。</li>
+          <li><code>components/ConvAI.tsx</code>：语音会话主逻辑和界面状态。</li>
+          <li><code>app/api/signed-url/route.ts</code>：获取 ElevenLabs signed URL。</li>
+          <li><code>public/avatar.png</code>：Agent 头像资源。</li>
+          <li><code>public/American.mp3</code>：内置语音配置参考音频。</li>
+          <li><code>doc/</code>：项目图文教程截图。</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="section two-col">
+      <article class="card">
+        <h2>本地运行</h2>
+        <pre><code>pnpm install
+pnpm dev</code></pre>
+        <p style="margin-top: 12px;">
+          如果使用 npm、yarn 或 bun，也可以按 README 中的命令启动开发服务。
+        </p>
+      </article>
+
+      <article class="card note">
+        <h2>环境变量</h2>
+        <p>运行语音会话前，需要在本地配置 ElevenLabs 相关变量：</p>
+        <pre style="margin-top: 12px;"><code>AGENT_ID=你的 ElevenLabs Agent ID
+XI_API_KEY=你的 ElevenLabs API Key</code></pre>
+      </article>
+    </section>
+
+    <section class="section">
+      <article class="card">
+        <h2>工作流程</h2>
+        <ul>
+          <li>用户点击 <code>Start conversation</code> 后，浏览器请求麦克风权限。</li>
+          <li>前端调用 <code>/api/signed-url</code>，服务端使用 <code>AGENT_ID</code> 和 <code>XI_API_KEY</code> 请求 ElevenLabs。</li>
+          <li>拿到 signed URL 后，前端通过 <code>useConversation</code> 启动语音会话。</li>
+          <li>Agent 回复时，页面显示文本消息，并通过波形与头像状态反馈当前连接情况。</li>
+        </ul>
+      </article>
+    </section>
+
+    <footer>
+      此介绍页为本地项目说明文件，文件名：<code>project-intro-cn.html</code>。
+    </footer>
+  </main>
+</body>
+</html>
